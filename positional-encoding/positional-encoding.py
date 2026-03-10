@@ -12,11 +12,11 @@ def positional_encoding(seq_len, d_model, base=10000.0):
     # x = base ** (-2 / d_model)
     # np.exp(np.log(-2/d_model))
 
-    x = np.exp(-2 / d_model * np.log(base))
+    # x = np.exp(-2 / d_model * np.log(base))
     
     # b = x ** b
 
-    b = np.exp(b * np.log(x))
+    b = np.exp(b * (-2 / d_model * np.log(base)))
     
     pos = np.arange(0, seq_len)
     
