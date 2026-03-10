@@ -9,9 +9,15 @@ def positional_encoding(seq_len, d_model, base=10000.0):
     # pass
 
     b = np.floor(np.arange(0, d_model) / 2)
-    x = base ** (-2 / d_model)
-    b = x ** b
+    # x = base ** (-2 / d_model)
+    # np.exp(np.log(-2/d_model))
 
+    x = np.exp(-2 / d_model * np.log(base))
+    
+    # b = x ** b
+
+    b = np.exp(b * np.log(x))
+    
     pos = np.arange(0, seq_len)
     
     v = np.outer(pos, b)
