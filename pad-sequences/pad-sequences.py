@@ -9,20 +9,14 @@ def pad_sequences(seqs, pad_value=0, max_len=None):
     # Your code here
 
     if max_len is None:
-        max_len = max([len(x) for x in seqs])
+        max_len = max(len(x) for x in seqs)
 
     pad = [pad_value for x in range(max_len)]
 
-    res = seqs.copy()
+    res = np.full((len(seqs), max_len), pad_value)
     i = 0
-    for seq in res:
 
-        if len(seq) <= max_len:
-            res[i] = seq + pad[0:max_len - len(seq)]
-        else:
-            res[i] = seq[0:max_len]
-        i += 1
-        # print(res)
-
-    # print(max_len)
+    for i, seq in enumerate(seqs):
+        cur_len = min(len(seq), max_len)
+        res[i][:cur_len] = np.array(seqs[i][:cur_len])
     return res
