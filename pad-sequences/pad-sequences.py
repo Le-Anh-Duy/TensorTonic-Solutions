@@ -14,7 +14,6 @@ def pad_sequences(seqs, pad_value=0, max_len=None):
     pad = [pad_value for x in range(max_len)]
 
     res = np.full((len(seqs), max_len), pad_value)
-    i = 0
 
     for i, seq in enumerate(seqs):
         cur_len = min(len(seq), max_len)
