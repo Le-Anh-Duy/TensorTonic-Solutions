@@ -12,12 +12,12 @@ def batch_norm_forward(input, gamma, beta, eps=1e-5):
     if len(x.shape) == 2:
         for i in range(x.shape[1]):
             u = np.mean(x[:,i])
-            s2 = np.mean((x[:,i] - u) ** 2)
+            s2 = np.var(x[:,i])
             x_hat[:,i] = gamma[i] * (x[:,i] - u) / np.sqrt(s2 + eps) + beta[i]
     else:
         for i in range(x.shape[1]):
             u = np.mean(x[:,i,:,:])
-            s2 = np.mean((x[:,i,:,:] - u) ** 2)
+            s2 = np.var(x[:,i,:,:])
             x_hat[:,i] = gamma[i] * (x[:,i,:,:] - u) / np.sqrt(s2 + eps) + beta[i]
             
     return x_hat
