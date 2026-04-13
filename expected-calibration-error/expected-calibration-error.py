@@ -1,9 +1,10 @@
 import math
+import numpy as np
 def expected_calibration_error(y_true, y_pred, n_bins):
     """
     Compute Expected Calibration Error.
     """
-    # Write code here
+    
     bins = [0 for i in range(n_bins)]
     n = len(y_true)
     for y, p in zip(y_true, y_pred):
