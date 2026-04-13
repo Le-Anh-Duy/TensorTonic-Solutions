@@ -11,8 +11,6 @@ def expected_calibration_error(y_true, y_pred, n_bins):
         idx -= idx == n_bins
         bins[idx] += 1.0 * (y - p) / n
 
-    print(bins)
-
     ans = sum([abs(bins[idx]) for idx in range(n_bins)])
     
 
